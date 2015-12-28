@@ -1,4 +1,4 @@
-# Find the smallest number n whose multiples are 2n, 3n, 4n, 5n and 6n are anagrams of the digits of n.
+# Find the smallest number n whose multiples 2n, 3n, 4n, 5n and 6n are anagrams of the digits of n.
 import time
 
 def bruteForce(ceiling):
