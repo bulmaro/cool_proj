@@ -4,7 +4,8 @@ import time
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)  
 
-out = {"c0":11, "c1":36, "c2":10, "c3":8, "c4":33, "c5":32, "c6":23, "c7":19, "a0":13, "a1":37, "a2":22, "a3":18, "a4":16, "a5":15, "a6":40, "a7":38}
+out = {"c0":11, "c1":36, "c2":10, "c3":8, "c4":33, "c5":32, "c6":23, "c7":19, \
+       "a0":13, "a1":37, "a2":22, "a3":18, "a4":16, "a5":15, "a6":40, "a7":38}
 
 # set all as output
 for k in out.keys():
@@ -33,10 +34,10 @@ def set_anodes(byte):
   GPIO.output(out["a7"], GPIO.HIGH if byte & 0x128 == 0x128 else GPIO.LOW )#10000000
 
 movie = [ 
-    [0b10010000,0b11110000,0b10010000,0b10010000],
-    [0b1111,0b1001,0b1001,0b1111],
-    [0b1000,0b1000,0b1000,0b1111],
-    [0b1111,0b1001,0b1111,0b1001]
+    [0b10000000,0b00000000,0b00000000,0b00000000,0b00000000,0b00000000,0b00000000,0b00000000]
+#    [0b1111,0b1001,0b1001,0b1111],
+#    [0b1000,0b1000,0b1000,0b1111],
+#    [0b1111,0b1001,0b1111,0b1001]
   ]
 
 def showBitmap(bitmap, showFor):
@@ -52,4 +53,8 @@ def showAnimation(movie):
   for bitmap in movie:
     showBitmap(bitmap, 1)
 
-showAnimation(movie)
+#showAnimation(movie)
+#set_cathodes(0b11111111)
+#set_anodes(0b00000000)
+#GPIO.output(19,0)
+#GPIO.output(38,1)
