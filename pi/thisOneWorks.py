@@ -136,6 +136,10 @@ def showBitmap(bitmap, showFor):
 
 def showAnimation(movie):
   for bitmap in movie:
-    showBitmap(bitmap, 1)
+    showBitmap(bitmap,.2)
+
+#def scrollBitmap(bitmap):
+#  for n in range(0,24):
+                       
 
 showAnimation(movie)
