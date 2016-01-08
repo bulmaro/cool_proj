@@ -9,16 +9,18 @@ def scrollString(string):
 
   #iterates through the string one char at a time
   while True:
-    print string[index]
     letter = string[index]
     letter_bitmap = alpha[letter]
+
     for shift in range(0,8):
       frames_per_second = 50
+      showFor = 1
       for n in range(0, int(showFor*frames_per_second)):
         for row in range(0,len(letter_bitmap)):
-          set_anodes(1<<row)
-          set_cathodes( letter_bitmap[row]<<shift )
+          Display().set_anodes(1<<row)
+          Display().set_cathodes( letter_bitmap[row]<<shift )
           time.sleep(1.0/(len(bitmap)*frames_per_second))
+
     index+=1
     if index >= len(string):
       break

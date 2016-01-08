@@ -1,5 +1,5 @@
-# import RPi.GPIO as GPIO  
-# import time  
+import RPi.GPIO as GPIO  
+import time  
 
 class Display():
   out = {"c0":11, "c1":36, "c2":10, "c3":8, "c4":33, "c5":32, "c6":23, "c7":19, \
