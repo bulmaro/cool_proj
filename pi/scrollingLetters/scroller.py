@@ -1,7 +1,12 @@
+#!/usr/bin/python
+import sys
 import copy
 from LED_Matrix_Display import *
 from alphabet import *
 
+stringToScroll = sys.argv[1]
+howFast = float(sys.argv[2])
+howWide = int(sys.argv[3])
 Display().setup()
 
 def scrollString(string):
@@ -16,10 +21,10 @@ def scrollString(string):
     for row in range(0,8):
       letter_bitmap[row] = letter_bitmap[row] ^ alpha[letter][row]
 
-    for shift in range(0,8): # shift letter across view
+    for shift in range(0,howWide): # shift letter across view
       for i in range(0,len(letter_bitmap)):
         letter_bitmap[i] = letter_bitmap[i]<<1
-      showBitmap(letter_bitmap, .04)
+      showBitmap(letter_bitmap, howFast)
 
     index+=1
     if index >= len(string):
@@ -36,5 +41,5 @@ def showBitmap(bitmap, showFor):
         Display.set_cathodes( (bitmap[row] & 0xFF00)>>8 )
         time.sleep(1.0/(len(bitmap)*frames_per_second))
 
-scrollString("Esteban nabetse set bet tab bat nab   battab  ")
+scrollString(stringToScroll)
 
