@@ -1,3 +1,4 @@
+import copy
 from LED_Matrix_Display import *
 from alphabet import *
 
@@ -10,17 +11,12 @@ def scrollString(string):
   #iterates through the string one char at a time
   while True:
     letter = string[index]
-    letter_bitmap = alpha[letter]
+    letter_bitmap = copy.deepcopy(alpha[letter])
 
     for shift in range(0,8):
-      frames_per_second = 50
-      showFor = .1
-      for n in range(0, int(showFor*frames_per_second)):
-        for row in range(0,len(letter_bitmap)):
-          Display().set_anodes(1<<row)
-          Display().set_cathodes( letter_bitmap[row]<<shift )
-          time.sleep(1.0/(len(letter_bitmap)*frames_per_second))
-
+      for i in range(0,len(letter_bitmap)):
+        letter_bitmap[i] = letter_bitmap[i]<<shift
+      showBitmap(letter_bitmap, .1)
     index+=1
     if index >= len(string):
       break
@@ -29,8 +25,8 @@ def showBitmap(bitmap, showFor):
     frames_per_second = 50
     for n in range(0, int(showFor*frames_per_second)):
       for row in range(0,len(bitmap)):
-        set_anodes( 1<<row )
-        set_cathodes( bitmap[row] )
+        Display.set_anodes( 1<<row )
+        Display.set_cathodes( bitmap[row] )
         time.sleep(1.0/(len(bitmap)*frames_per_second))
 
 scrollString("Esteban")
