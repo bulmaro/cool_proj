@@ -4,8 +4,11 @@ import copy
 from LED_Matrix_Display import *
 from alphabet import *
 
+# A string containing chars [A-Za-z]
 stringToScroll = sys.argv[1]
+# For best results a float between 0 and 1, 
 howFast = float(sys.argv[2])
+# The width of a letter bitmap, with this alphabet 6
 howWide = int(sys.argv[3])
 Display().setup()
 
@@ -32,7 +35,7 @@ def scrollString(string):
 
 # display the second byte of bitmap 
 # given 0xXXXXSSXX I want 0x000000SS
-# done by maksing with 0x0000FF00 and shifting 8 right
+# done by masking with 0x0000FF00 and shifting 8 right
 def showBitmap(bitmap, showFor):
     frames_per_second = 50
     for n in range(0, int(showFor*frames_per_second)):
